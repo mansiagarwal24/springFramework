@@ -35,10 +35,10 @@ public class HotelImpl {
         return hotelName;
     }
 
-   public HotelImpl(String hotelName, String location) {
-       this.hotelName = hotelName;
-        this.location = location;
-   }
+//    public HotelImpl(String hotelName, String location) {
+//        this.hotelName = hotelName;
+//         this.location = location;
+//    }
 
     public void setHotelName(String hotelName) {
         this.hotelName = hotelName;
