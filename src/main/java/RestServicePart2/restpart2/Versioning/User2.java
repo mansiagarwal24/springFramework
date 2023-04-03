@@ -2,11 +2,8 @@ package RestServicePart2.restpart2.Versioning;
 
 public class User2 {
     private String firstname;
-
     private String lastname;
-
     private int age;
-
     private String designation;
 
     public User2(String firstname, String lastname, int age, String designation) {

@@ -12,8 +12,11 @@ import java.util.List;
 public class UserController {
     List<User1> l1=new ArrayList<>();
     List<User2>l2=new ArrayList<>();
+
+    //URL Versioning
     @GetMapping("/v1/user")
     public List<User1>getUser1(){
+
         return l1;
     }
     @PostMapping("/v1/user")
@@ -25,6 +28,7 @@ public class UserController {
 
     @GetMapping("/v2/user")
     public List<User2>getUser2(){
+
         return l2;
     }
     @PostMapping("/v2/user")
@@ -32,23 +36,33 @@ public class UserController {
         l2.add(u);
         return "new user added";
     }
-    @GetMapping(path="/v1/user",params = "version1")
-    public List<User1>getversion1Param(){
+
+    //Request-Parameter Versioning
+    @GetMapping(path="/v1/user",params = "version-1")
+    public List<User1> getVersion1Param(){
         return l1;
     }
 
-    @GetMapping(path="/v2/user",params = "version2")
-    public List<User2>getadvanceversion1Param(){
+    @GetMapping(path="/v2/user",params = "version-2")
+    public List<User2>getVersion2Param(){
         return l2;
     }
 
+    // Header Versioning
     @GetMapping(path="/user/header",headers = "API=1")
-    public List<User1>getversion1header(){
+    public List<User1>getVersion1Header(){
         return l1;
     }
 
     @GetMapping(path="/user/header",headers = "API=2")
-    public List<User2>getadvanceversion1header(){
+    public List<User2>getVersion2Header(){
         return l2;
     }
+
+    //Mime type Versioning
+    @GetMapping(path="/user/accept",produces = "application/vnd.company.app-v1+json")
+    public List<User1>getVersion1MimeType(){
+        return l1;
+    }
+
 }

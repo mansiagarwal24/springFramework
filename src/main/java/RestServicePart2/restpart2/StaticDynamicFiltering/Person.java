@@ -1,20 +1,18 @@
 package RestServicePart2.restpart2.StaticDynamicFiltering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class Data {
-    @JsonProperty("user-name")// change name to user name
+@JsonFilter("PersonFilter")
+public class Person {
+    //@JsonProperty("user_name")// change name to user name
     private String name;
     private int age;
-
-    @JsonIgnore
+   // @JsonIgnore
     private String password;
 
-    public Data() {
-    }
 
-    public Data(String name, int age, String password) {
+    public Person(String name, int age, String password) {
         this.name = name;
         this.age = age;
         this.password = password;
@@ -46,7 +44,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", password='" + password + '\'' +
