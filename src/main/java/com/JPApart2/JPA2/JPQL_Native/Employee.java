@@ -1,4 +1,4 @@
-package com.JPApart2.JPA2.Entities;
+package com.JPApart2.JPA2.JPQL_Native;
 
 import jakarta.persistence.*;
 
@@ -55,7 +55,7 @@ public class Employee {
     }
 
     public void setSalary(double salary) {
-        salary = salary;
+        this.salary = salary;
     }
 
     @Override
