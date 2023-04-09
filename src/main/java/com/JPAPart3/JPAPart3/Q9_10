@@ -1,0 +1,4 @@
+@Transactional
+When a method is marked with @Transactional, spring automatically creates a transaction around that method,
+it ensures that every transaction is treated as an atomic operation,and if any one of them fails in between
+then all of the above transaction gets rolled back.It ensures the consistency of the data.
