@@ -1,0 +1,13 @@
+Actuator:
+It is used to monitoring the application. It shows many information about the application like - info,debug,
+health,bean etc.
+health:it shows the condition of the application.
+info:it shows the general information about the application.
+beans:shows all the beans of the application.
+
+
+Dev-Tools:
+It is basically used to restart the application when you made changes in the project rather than start and stop
+the application everytime manually.
+It is the important feature of spring boot which will get auto configure when you add dependency in your pom
+file.

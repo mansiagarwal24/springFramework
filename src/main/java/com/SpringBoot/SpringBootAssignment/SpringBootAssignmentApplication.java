@@ -7,8 +7,6 @@ import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class SpringBootAssignmentApplication {
-	@Autowired
-	EmployeeDao employee;
 
 	public static void main(String[] args) {
 

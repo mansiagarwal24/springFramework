@@ -17,6 +17,9 @@ public class Employee {
         this.id = id;
         this.designation = designation;
     }
+    public Employee(){
+
+    }
 
     public String getName() {
         return name;
