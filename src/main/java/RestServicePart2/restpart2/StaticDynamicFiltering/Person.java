@@ -2,15 +2,21 @@ package RestServicePart2.restpart2.StaticDynamicFiltering;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonFilter("PersonFilter")
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.persistence.Transient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+//@JsonFilter("PersonFilter") //used for dynamic filtering part
 public class Person {
     //@JsonProperty("user_name")// change name to user name
     private String name;
     private int age;
-   // @JsonIgnore
+   @JsonIgnore //(used for static filtering)
     private String password;
-
 
     public Person(String name, int age, String password) {
         this.name = name;
@@ -33,7 +39,6 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-
     public String getPassword() {
         return password;
     }
@@ -50,4 +55,6 @@ public class Person {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
 }

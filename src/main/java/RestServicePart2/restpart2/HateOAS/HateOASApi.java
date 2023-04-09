@@ -1,5 +1,8 @@
 package RestServicePart2.restpart2.HateOAS;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +18,25 @@ import java.util.List;
 public class HateOASApi {
     List<Student> list=new ArrayList<>();
 
+    @Operation(summary = "Create Student")
     @PostMapping("/student")
     public String addStudent(@RequestBody Student s){
         list.add(s);
         return "Student added";
     }
+
+    @Operation(summary = "Get All Student")
     @GetMapping("/student")
     public List<Student>allstudent(){
 
         return list;
     }
+
+    @Operation(summary = "Get Student basis on Id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the Student"),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied"),
+            @ApiResponse(responseCode = "404", description = "Student not found")})
     @GetMapping("/student/{id}")
     public EntityModel<Student>getSpecific(@PathVariable int id){
         Student s=list.stream().filter(e->e.getId()==id).findFirst().orElse(null);

@@ -16,7 +16,6 @@ public class UserController {
     //URL Versioning
     @GetMapping("/v1/user")
     public List<User1>getUser1(){
-
         return l1;
     }
     @PostMapping("/v1/user")
@@ -60,9 +59,14 @@ public class UserController {
     }
 
     //Mime type Versioning
-    @GetMapping(path="/user/accept",produces = "application/vnd.company.app-v1+json")
+    @GetMapping(path="/user/accept",produces = "application/user-v1+json")
     public List<User1>getVersion1MimeType(){
         return l1;
+    }
+
+    @GetMapping(path="/user/accept",produces = "application/user-v2+json")
+    public List<User2>getVersion2MimeType(){
+        return l2;
     }
 
 }

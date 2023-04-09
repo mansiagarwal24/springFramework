@@ -15,7 +15,6 @@ import java.util.List;
 @RestController
 public class DynamicFiltering {
 
-
     @GetMapping("/dynamic-api")
     public MappingJacksonValue getPersonlist() {
         Person p = new Person("Mansi", 20, "favplace");

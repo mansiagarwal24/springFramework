@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.print.attribute.standard.MediaName;
+import javax.print.attribute.standard.MediaTray;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +16,11 @@ import java.util.List;
 public class Ques3_4 {
     List<User>list=new ArrayList<>();
 
-    @GetMapping("/users")
+    @GetMapping(value = "/users",produces ="MediaType_application/xml")
     public List<User> getuser(){
         return list;
     }
-    @PostMapping("/users")
+    @PostMapping(value = "/users",consumes ="MediaType_application/xml")
     public User adduser(@RequestBody User u){
         list.add(u);
         return u;
