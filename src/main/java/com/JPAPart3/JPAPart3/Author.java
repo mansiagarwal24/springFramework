@@ -1,32 +1,25 @@
 package com.JPAPart3.JPAPart3;
 
+import com.JPAPart3.JPAPart3.Address;
+import com.JPAPart3.JPAPart3.Book;
+import com.JPAPart3.JPAPart3.StringListConverter;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int authorId;
     private String authorName;
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
-    private Set<Book> book;
-
-    // ONE-TO-ONE MAPPING
-//    @OneToOne(mappedBy = "author")
-//    private Book book;
-
-    // USED FOR MANY-TO-MANY MAPPING
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "Author_Book",
-//            joinColumns = @JoinColumn(name="author_id",referencedColumnName = "authorId"),
-//            inverseJoinColumns = @JoinColumn(name = "book_id",referencedColumnName = "bookId"))
-//    private Set<Book> books;
+    @Column
+    @Convert(converter = StringListConverter.class)
+    private List<String> subjects;
 
     public String getAuthorName() {
         return authorName;
@@ -52,31 +45,13 @@ public class Author {
         this.address = address;
     }
 
-    public Set<Book> getBook() {
-        return book;
+    public List<String> getSubjects() {
+        return subjects;
     }
 
-    public void setBook(Set<Book> book) {
-        this.book = book;
+    public void setSubjects(List<String> subjects) {
+        this.subjects = subjects;
     }
-//ONE-TO-ONE
-//    public Book getBook() {
-//        return book;
-//    }
-//
-//    public void setBook(Book book) {
-//        this.book = book;
-//    }
-
-
-    // MANY-TO-MANY
-//    public Set<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(Set<Book> books) {
-//        this.books = books;
-//    }
 
     @Override
     public String toString() {
@@ -84,7 +59,6 @@ public class Author {
                 "authorName='" + authorName + '\'' +
                 ", authorId=" + authorId +
                 ", address=" + address +
-                ", books=" + book +
                 '}';
     }
 }
